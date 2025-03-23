@@ -1,0 +1,23 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block mainblock %}
+<div class="col-xl-6 col-md-6 col-sm-4 p-2 min-w-300">
+  <div class="card card-common">
+  <div class="card-header">
+    <h2>Change Password</h2>
+  </div>
+  <div class="card-body">
+      <form action="/changepass" method="post">
+          {{ render_field(form.current_password, type="password", placeholder="Enter current password", id="pwd") }}
+          {{ render_field(form.new_password, type="password", placeholder="Enter new password", id="pwd") }}
+          {{ render_field(form.retype_password, type="password", placeholder="Retype new password", id="pwd") }}
+          {{ form.hidden_tag() }}
+          <div>
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary", value="changepass">Change Password</button>
+            </div>
+      </form>
+  </div>
+</div>
+<div>
+{% endblock %}

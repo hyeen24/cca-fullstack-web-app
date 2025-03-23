@@ -1,0 +1,39 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block pageTitle %}Competitive{% endblock %}
+{% block pageHeader %}Competitive{% endblock %}
+{% block mainblock %}
+<div class="row-card-container d-flex flex-column flex-md-row flex-lg-row flex-wrap align-content-center p-2">
+  {% for group in group_list %}
+    <div class="card card-common-comp p-2">
+      <img src="{{ group.url }}" class="img-fluid"/>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">{{ group.name }}</h5>
+          <p class="card-text-desc">Email: {{ group.email }}</p>
+          <h5 class="card-text">Awards</h5>
+          <div>
+            {% for year, events in group.awards.items() %}
+            <p class="card-text-desc font-weight-bold mb-0">{{ year }}</p>
+              {% for event, awards in events.items() %}
+                <p class="card-text-desc mb-1">{{ event }}</p> 
+                <ol class="card-text-desc">
+                  {% for award in awards %}
+                      <li>{{ award }}</li>
+                  {% endfor %}
+                </ol>
+              {% endfor %}
+            {% endfor %}
+          </div>
+          <div class="d-flex justify-content-end">
+            <form action="/apply" method="post">
+              <input type="hidden" name="group_type" value="competitivegroups"/>
+              <input type="hidden" name="group_name" value="{{ group.name }}"/>
+              <input type="hidden" name="group_code" value="{{ group.code }}"/>
+              <button type="submit" class="btn btn-primary", value="apply_join">Apply to Join</button>
+            </form> 
+          </div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

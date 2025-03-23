@@ -1,0 +1,29 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block mainblock %}
+<div class="col-xl-6 col-md-6 col-sm-4 p-2 min-w-400">
+  <div class="card card-common">
+  <div class="card-header">
+    <h4>Create Student Account</h4>
+  </div>
+  <div class="card-body">
+      <form action="/create" method="post">
+          {{ render_field(form.email, type="email", placeholder="Enter email", id="email") }}
+          {{ render_field(form.name, type="name", placeholder="Enter name", id="name") }}
+          <div class="row ml-1">
+            <label for="dropdown">Choose account type:</label>
+            <select id="account_type" name="account_type" class="ml-1">
+              <option value="Student" selected>Student</option>
+              <option value="CCA Admin" >CCA Admin</option>
+            </select>
+            <button type="submit" class="btn btn-primary ml-1", value="create">Submit</button>
+          </div>
+          {{ form.hidden_tag() }}
+          <div>
+          </div>
+          
+      </form>
+  </div>
+</div>
+<div>
+{% endblock %}

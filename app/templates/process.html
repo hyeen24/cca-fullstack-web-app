@@ -1,0 +1,58 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block mainblock %}
+{% if applications %}
+<ul class="list-group"></ul>
+  <li class="list-group-item">
+    <div class="row font-weight-bold process-list">
+      <div class="col-1">Type</div>
+      <div class="col">CCA Name</div>
+      <div class="col">Student Email</div>
+      <div class="col">Application Date</div>
+      <div class="col">Status</div>
+      <div class="col"></div>
+    </div>
+  </li>
+  {% for app in applications %}
+    <li class="list-group-item process-list">
+      <div class="row">
+        <div class="col-1">{{ app['type'] }}</div>
+        <div class="col">{{ app['name'] }}</div>
+        <div class="col">{{ app['email'] }}</div>
+        <div class="col">{{ app['date'] }}</div>
+        
+          {% if user_type == "student" %}
+          <div class="col">{{ app['status'] }}</div>
+          <div class="col">
+            {% if app['status'] == "Unsuccessful" %}
+            {% else %}
+            <form action="/process" method="post">  
+              <input type="hidden" name="app_id" value="{{ app['id'] }}"/>
+              <button type="submit" action="action" value="delete" class="btn btn-primary">Delete</button>
+            </form>
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="col">
+            <form action="/process" method="post">
+                <select id="status" name="status">
+                    <option value="Pending" {% if app.status == 'Pending' %}selected{% endif %}>Pending</option>
+                    <option value="Successful" {% if app.status == 'Successful' %}selected{% endif %}>Successful</option>
+                    <option value="Unsuccessful" {% if app.status == 'Unsuccessful' %}selected{% endif %}>Unsuccessful</option>  
+                </select>
+                <input type="hidden" name="app_id" value="{{ app['id'] }}"/>
+              </div>
+              <div class="col">
+                <button type="submit" name="action" value="updatestatus" class="btn btn-primary">Update Status</button>
+              </div>
+            </form>
+          {% endif %}
+        
+      </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+  <h4>No application to Manage</h4>
+{% endif %}
+{% endblock %}

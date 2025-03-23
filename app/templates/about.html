@@ -1,0 +1,28 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block pageTitle %}About{% endblock %}
+{% block pageHeader %}About{% endblock %}
+{% block mainblock %}
+<div class="row-card-container d-flex flex-column flex-md-row align-content-center p-2">
+    <div class="card card-common-comp p-1">
+      <img src="{{ url_for('static', filename='img/interst_groups.png')}}" class="img-fluid" />
+      <a href="interestgroups" class="card-link">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Interest Groups</h5>
+          <p class="card-text text-center">Promote campus vibrancy and upskill students through engagement with student-led initiatives</p>
+        </div>
+      </a>
+    </div>
+  <div class="card card-common-comp p-1">
+    <img src="{{ url_for('static', filename='img/competitionGroups.png')}}" class="img-fluid" />
+    <a href="competitivegroups" class="card-link">
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      <div class="card-body">
+        <h5 class="card-title text-center">Competition Groups</h5>
+        <p class="card-text text-center">Enhance University Experience by representing SUSS in local and overseas sports competitions</p>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

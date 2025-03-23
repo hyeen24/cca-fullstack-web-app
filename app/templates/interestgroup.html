@@ -1,0 +1,38 @@
+{% from "_render_field.html" import render_field %}
+{% extends "index.html" %}
+{% block pageTitle %}Interest{% endblock %}
+{% block pageHeader %}Interest{% endblock %}
+{% block mainblock %}
+  {% for group in group_list %}
+  <div class="card card-row mb-3">
+    <div class="row d-flex g-0 flex-md-column flex-lg-row p-3">
+      <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center">
+        <img src="{{ group.url }}" class="img-fluid rounded-start h-70 w-100" alt="{{ group.name }}">
+      </div>
+      <div class="col-lg-8 col-md-12 d-flex align-items-center ml-auto">
+        <div class="card-body">
+          <h5 class="card-title bold-text">{{ group.category }} - {{ group.name }}</h5>
+          <p class="card-text-desc">Email: {{ group.email }}</p>
+          <h5 class="card-title bold-text">Description</h5>
+          {% for desc in group.description %}
+          <p class="card-text-desc">{{ desc }}</p>
+          {% endfor %}
+          <ul>
+            {% for highlight in group.highlights %}
+              <li class="card-text-desc">{{ highlight }}</li>
+            {% endfor %}
+          </ul>
+          <div class="d-flex justify-content-end">
+            <form action="/apply" method="post">
+              <input type="hidden" name="group_type" value="interestgroups"/>
+              <input type="hidden" name="group_name" value="{{ group.name }}"/>
+              <input type="hidden" name="group_code" value="{{ group.code }}"/>
+              <button type="submit" class="btn btn-primary", value="apply_join">Apply to Join</button>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  {% endfor %}
+{% endblock %}
