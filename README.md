@@ -1,7 +1,3 @@
-Here’s a well-structured **README** description for your project:  
-
----
-
 # **SUSS Club Management System**  
 
 ## **Overview**  
@@ -77,6 +73,4 @@ suss-club-management/
 🚀 **Dashboard Analytics:** Show statistics on student participation.  
 🚀 **Automated Role Assignments:** Assign CCA admin roles based on eligibility.  
 
----
 
-This README gives a clear overview of the project and installation instructions. Let me know if you’d like to add anything! 🚀
