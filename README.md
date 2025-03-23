@@ -20,7 +20,7 @@ The SUSS Club Management System is a web application designed to facilitate stud
 ## **Installation & Setup**  
 ### **1. Clone the repository**  
 ```bash
-git clone https://github.com/yourusername/suss-club-management.git
+git clone https://github.com/hyeen24/cca-fullstack-web-app
 cd suss-club-management
 ```
 
