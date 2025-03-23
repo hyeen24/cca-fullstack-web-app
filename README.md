@@ -2,6 +2,9 @@
 
 ## **Overview**  
 The SUSS Club Management System is a web application designed to facilitate student club membership management at **Singapore University of Social Sciences (SUSS)**. It allows administrators to create student accounts, process applications for various clubs, and manage membership statuses efficiently.  
+
+** This is not a web app that they are using it is just a project to create a web app **
+
 ![image](https://github.com/user-attachments/assets/db13ddfe-cf9e-4a03-a303-1e0be5135e76)
 
 ## **Features**  
